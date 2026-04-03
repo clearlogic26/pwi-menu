@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polish Water Ice & Ice Cream | Wildwood, NJ</title>
+  <meta name="description" content="Scan. Browse. Enjoy. Premium mobile menu for Polish Water Ice & Ice Cream in Wildwood, NJ.">
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: rgba(13, 19, 35, 0.84);
+      --panel: rgba(17, 25, 46, 0.86);
+      --panel-strong: rgba(25, 35, 64, 0.95);
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #f8fbff;
+      --muted: #a9b7d3;
+      --pink: #ff4fb4;
+      --cyan: #3ddcff;
+      --orange: #ff9b3d;
+      --lime: #b7ff58;
+      --gold: #ffd36e;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.34);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max-width: 1180px;
+      --font-display: "Trebuchet MS", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+      --font-body: "Avenir Next", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(61, 220, 255, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 79, 180, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 120%, rgba(255, 155, 61, 0.18), transparent 36%),
+        linear-gradient(180deg, #04070d 0%, #09111f 32%, #07101d 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 18rem;
+      height: 18rem;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      top: -4rem;
+      left: -5rem;
+      background: var(--pink);
+    }
+
+    body::after {
+      right: -6rem;
+      bottom: 12rem;
+      background: var(--cyan);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .shell {
+      width: min(calc(100% - 1.25rem), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 1rem 0 1.5rem;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 1rem;
+      background:
+        linear-gradient(140deg, rgba(15, 24, 46, 0.9), rgba(7, 10, 22, 0.92)),
+        linear-gradient(120deg, rgba(61, 220, 255, 0.12), rgba(255, 79, 180, 0.08));
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(61, 220, 255, 0.18), transparent 24%),
+        radial-gradient(circle at 85% 18%, rgba(255, 79, 180, 0.2), transparent 26%),
+        radial-gradient(circle at 50% 90%, rgba(255, 211, 110, 0.18), transparent 28%);
+      z-index: -1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-chip,
+    .tax-chip {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 0.55rem 0.9rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(18px);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 8vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy .accent {
+      display: block;
+      background: linear-gradient(90deg, var(--gold), var(--orange), var(--pink), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      margin: 0.9rem 0 0;
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 38rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.3rem;
+    }
+
+    .glass {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+    }
+
+    .quick-links {
+      padding: 0.9rem;
+    }
+
+    .quick-links strong,
+    .locations strong {
+      display: block;
+      margin-bottom: 0.75rem;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .quick-links nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .quick-links a {
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(61, 220, 255, 0.18), rgba(255, 79, 180, 0.16));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .quick-links a:active,
+    .quick-links a:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(255, 155, 61, 0.22), rgba(255, 79, 180, 0.18));
+    }
+
+    .locations {
+      padding: 1rem;
+    }
+
+    .location-list {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .location {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: var(--radius-md);
+      background: rgba(6, 12, 26, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .location span:first-child {
+      font-weight: 700;
+    }
+
+    .location span:last-child {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      align-items: end;
+      margin-top: 1.2rem;
+    }
+
+    .hero-shot {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+      min-height: 8.6rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-shot:nth-child(2) {
+      animation-delay: -1.4s;
+    }
+
+    .hero-shot:nth-child(3) {
+      animation-delay: -2.8s;
+    }
+
+    .hero-shot img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .section {
+      padding: 1rem 0 0.35rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 0.38rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--cyan);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .section-head h2 {
+      margin: 0.5rem 0 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      margin: 0.3rem 0 0;
+      color: var(--muted);
+      max-width: 38rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(16, 24, 46, 0.95), rgba(7, 12, 24, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform 600ms cubic-bezier(.22,1,.36,1), opacity 600ms ease;
+    }
+
+    .card.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(61, 220, 255, 0.08), transparent 42%, rgba(255, 79, 180, 0.08));
+      pointer-events: none;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .gallery.single {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery.double {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .price-pill {
+      flex: 0 0 auto;
+      padding: 0.55rem 0.8rem;
+      border-radius: 18px;
+      font-size: 0.78rem;
+      text-align: right;
+      color: #08111f;
+      background: linear-gradient(135deg, var(--gold), #fff0a5);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .tag-row,
+    .price-grid,
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .tag,
+    .price,
+    .social {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+
+    .tag {
+      padding: 0.52rem 0.76rem;
+      font-size: 0.82rem;
+    }
+
+    .tag.highlight {
+      background: linear-gradient(135deg, rgba(255, 79, 180, 0.18), rgba(255, 211, 110, 0.22));
+      color: #fff7cf;
+      border-color: rgba(255, 211, 110, 0.36);
+    }
+
+    .price-grid {
+      gap: 0.6rem;
+    }
+
+    .price {
+      padding: 0.6rem 0.82rem;
+      min-width: 4.8rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.84rem;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .price span {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 0.18rem;
+    }
+
+    .split {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .note {
+      padding: 0.85rem 0.95rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(183, 255, 88, 0.12), rgba(61, 220, 255, 0.12));
+      border: 1px solid rgba(183, 255, 88, 0.22);
+      color: #edfbd2;
+      font-size: 0.9rem;
+    }
+
+    .beverage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+    }
+
+    .bev-item {
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .bev-item figure {
+      margin: 0 0 0.65rem;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .bev-item img {
+      height: 100%;
+      object-fit: contain;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+    }
+
+    .bev-item strong {
+      display: block;
+      font-size: 0.92rem;
+    }
+
+    .bev-item span {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      padding: 1.2rem 0 2.2rem;
+    }
+
+    .footer-panel {
+      padding: 1.2rem;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(16, 24, 45, 0.94), rgba(8, 12, 23, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .footer-panel h2 {
+      margin: 0 0 0.4rem;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .footer-panel p,
+    .copyright {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+    }
+
+    .social {
+      padding: 0.75rem 0.9rem;
+      font-weight: 700;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .social:hover,
+    .social:active {
+      transform: translateY(-2px);
+      border-color: rgba(61, 220, 255, 0.36);
+    }
+
+    [data-animate] {
+      will-change: transform, opacity;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (min-width: 700px) {
+      .hero-panel {
+        padding: 1.3rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card.featured {
+        grid-column: span 2;
+      }
+
+      .split {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero {
+        padding-top: 1.2rem;
+      }
+
+      .hero-panel {
+        padding: 1.5rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.3fr 0.7fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card.featured {
+        grid-column: span 3;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .card {
+        transform: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="shell">
+        <section class="hero-panel">
+          <div class="topbar">
+            <div class="brand-chip">Wildwood Boardwalk Favorite</div>
+            <div class="tax-chip">All Prices Include Tax</div>
+          </div>
+
+          <div class="hero-copy">
+            <h1>
+              Polish Water Ice
+              <span class="accent">& Ice Cream</span>
+            </h1>
+            <p class="tagline">Scan. Browse. Enjoy. Creamy Polish water ice, stacked soft serve, and bold boardwalk treats made for summer walks in Wildwood, NJ.</p>
+          </div>
+
+          <div class="hero-showcase">
+            <div class="hero-shot"><img src="images/water-ice-swirl.png" alt="Swirled Polish water ice"></div>
+            <div class="hero-shot"><img src="images/freeze-mango.png" alt="Mango Polish freeze"></div>
+            <div class="hero-shot"><img src="images/ice-cream-swirl.png" alt="Twist soft serve"></div>
+          </div>
+
+          <div class="hero-grid">
+            <div class="quick-links glass">
+              <strong>Jump To Menu</strong>
+              <nav>
+                <a href="#pwi">Water Ice</a>
+                <a href="#freeze">Freeze</a>
+                <a href="#ice-cream">Ice Cream</a>
+                <a href="#specialty">Specialty Treats</a>
+                <a href="#drinks">Drinks</a>
+              </nav>
+            </div>
+
+            <div class="locations glass">
+              <strong>Locations</strong>
+              <div class="location-list">
+                <div class="location"><span>2708</span><span>Boardwalk</span></div>
+                <div class="location"><span>3500</span><span>Boardwalk</span></div>
+                <div class="location"><span>3808</span><span>Boardwalk</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="section" id="pwi">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Signature</span>
+            <h2>Premium Frozen Favorites</h2>
+            <p>Built for mobile browsing with clear sizes, fast ordering, and flavor callouts right where customers need them.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card featured" data-animate>
+            <div class="gallery">
+              <figure><img src="images/water-ice-orange.png" alt="Orange Polish water ice cup"></figure>
+              <figure><img src="images/water-ice-blue.png" alt="Blue Polish water ice cup"></figure>
+              <figure><img src="images/water-ice-swirl.png" alt="Swirled Polish water ice cup"></figure>
+            </div>
+            <div class="card-header">
+              <div>
+                <h3>Polish Water Ice (PWI)</h3>
+              </div>
+              <div class="price-pill">Smoother & creamier than regular water ice</div>
+            </div>
+            <p>Mix any 2 flavors in one cup. This is the signature boardwalk order and the smooth texture is what keeps people coming back.</p>
+            <div class="tag-row">
+              <span class="tag">Cherry</span>
+              <span class="tag">Blue Raspberry</span>
+              <span class="tag highlight">Cotton Candy · #1 Seller</span>
+              <span class="tag">Watermelon</span>
+              <span class="tag">Mango</span>
+              <span class="tag">Piña Colada</span>
+              <span class="tag">Chocolate</span>
+              <span class="tag">Lemon</span>
+              <span class="tag">Green Apple</span>
+            </div>
+            <div class="price-grid">
+              <div class="price">$6.25<span>Small</span></div>
+              <div class="price">$7.00<span>Medium</span></div>
+              <div class="price">$7.75<span>Large</span></div>
+              <div class="price">$14.00<span>Quart</span></div>
+            </div>
+          </article>
+
+          <article class="card" id="freeze" data-animate>
+            <div class="gallery">
+              <figure><img src="images/freeze-orange.png" alt="Orange Polish freeze"></figure>
+              <figure><img src="images/freeze-blue.png" alt="Blue Polish freeze"></figure>
+              <figure><img src="images/freeze-mango.png" alt="Mango Polish freeze"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Polish Freeze</h3>
+              <div class="price-pill">Water ice + ice cream side by side</div>
+            </div>
+            <p>Same 9 PWI flavors, layered with soft serve for a boardwalk-style gelati experience.</p>
+            <div class="tag-row">
+              <span class="tag">Same 9 PWI Flavors</span>
+              <span class="tag">Chocolate</span>
+              <span class="tag">Vanilla</span>
+              <span class="tag">Twist</span>
+            </div>
+            <div class="price-grid">
+              <div class="price">$6.75<span>Small</span></div>
+              <div class="price">$7.50<span>Medium</span></div>
+              <div class="price">$8.25<span>Large</span></div>
+              <div class="price">$15.00<span>Quart</span></div>
+            </div>
+          </article>
+
+          <article class="card" id="ice-cream" data-animate>
+            <div class="gallery double">
+              <figure><img src="images/ice-cream-swirl.png" alt="Soft serve swirl cone"></figure>
+              <figure><img src="images/ice-cream-cup.png" alt="Soft serve ice cream cup"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Ice Cream</h3>
+              <div class="price-pill">Soft serve done right</div>
+            </div>
+            <p>Choose chocolate, vanilla, or twist. Cup pricing matches PWI sizes for easy ordering.</p>
+            <div class="split">
+              <div>
+                <div class="tag-row">
+                  <span class="tag">Chocolate</span>
+                  <span class="tag">Vanilla</span>
+                  <span class="tag">Twist</span>
+                </div>
+              </div>
+              <div class="note">Cup prices: Small $6.25, Medium $7.00, Large $7.75, Quart $14.00. Regular cone $6.25. Waffle cone $7.25. Sprinkles +$0.75.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="specialty">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Specialty Treats</span>
+            <h2>Big Flavor, Premium Finish</h2>
+            <p>From blend-ins to floats, these are the high-impact add-on items customers notice first on a phone screen.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card" data-animate>
+            <div class="gallery">
+              <figure><img src="images/chiller-oreo.png" alt="Oreo chiller"></figure>
+              <figure><img src="images/chiller-mm.png" alt="M and M chiller"></figure>
+              <figure><img src="images/chiller-cookie.png" alt="Cookie chiller"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Chiller</h3>
+              <div class="price-pill">Like a Blizzard</div>
+            </div>
+            <p>Blended ice cream with mix-ins. Choose a vanilla, chocolate, or twist base and make it rich.</p>
+            <div class="tag-row">
+              <span class="tag">Oreo</span>
+              <span class="tag">M&amp;M's</span>
+              <span class="tag">Reese's PB Cups</span>
+              <span class="tag">Snickers</span>
+              <span class="tag">Reese's Pieces</span>
+              <span class="tag">Butterfinger</span>
+            </div>
+            <div class="price-grid">
+              <div class="price">$8.50<span>Small</span></div>
+              <div class="price">$9.50<span>Large</span></div>
+            </div>
+          </article>
+
+          <article class="card" data-animate>
+            <div class="gallery">
+              <figure><img src="images/milkshake-vanilla.png" alt="Vanilla milkshake"></figure>
+              <figure><img src="images/milkshake-strawberry.png" alt="Strawberry milkshake"></figure>
+              <figure><img src="images/milkshake-chocolate.png" alt="Chocolate milkshake"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Milkshake</h3>
+              <div class="price-pill">Classic shakes + PWI flavors</div>
+            </div>
+            <p>Available in Cookies &amp; Cream, Vanilla, Chocolate, Black &amp; White, Strawberry, Banana, Root Beer, plus all PWI flavors.</p>
+            <div class="price-grid">
+              <div class="price">$8.50<span>Small</span></div>
+              <div class="price">$9.50<span>Large</span></div>
+            </div>
+          </article>
+
+          <article class="card" data-animate>
+            <div class="gallery double">
+              <figure><img src="images/slushie-blue.png" alt="Blue slushie"></figure>
+              <figure><img src="images/slushie-mango.png" alt="Mango slushie"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Slushie</h3>
+              <div class="price-pill">Drinkable PWI</div>
+            </div>
+            <p>Your favorite PWI flavor blended with water for an icy, smooth, take-it-on-the-go drink.</p>
+            <div class="price-grid">
+              <div class="price">$8.50<span>Small</span></div>
+              <div class="price">$9.50<span>Large</span></div>
+            </div>
+          </article>
+
+          <article class="card" data-animate>
+            <div class="gallery double">
+              <figure><img src="images/ice-cap-orange.png" alt="Orange ice cap"></figure>
+              <figure><img src="images/ice-cap-blue.png" alt="Blue ice cap"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Ice Cap</h3>
+              <div class="price-pill">Water ice float</div>
+            </div>
+            <p>Any PWI flavor with your soda choice. Bright, fizzy, and pure boardwalk energy.</p>
+            <div class="tag-row">
+              <span class="tag">Pepsi</span>
+              <span class="tag">Diet Pepsi</span>
+              <span class="tag">Starry</span>
+              <span class="tag">Mountain Dew</span>
+              <span class="tag">Ginger Ale</span>
+              <span class="tag">Orange Crush</span>
+              <span class="tag">Root Beer</span>
+              <span class="tag">Gatorade</span>
+            </div>
+            <div class="price-grid">
+              <div class="price">$8.50<span>Small</span></div>
+              <div class="price">$9.50<span>Large</span></div>
+            </div>
+          </article>
+
+          <article class="card" data-animate>
+            <div class="gallery single">
+              <figure><img src="images/float-rootbeer.png" alt="Root beer float"></figure>
+            </div>
+            <div class="card-header">
+              <h3>Float</h3>
+              <div class="price-pill">Ice cream + soda</div>
+            </div>
+            <p>The classic summer float. Cold soda, creamy soft serve, and a slower boardwalk pace.</p>
+            <div class="price-grid">
+              <div class="price">$8.50<span>Small</span></div>
+              <div class="price">$9.50<span>Large</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="drinks">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Cold Drinks</span>
+            <h2>Beverages</h2>
+            <p>Simple add-ons for the order line.</p>
+          </div>
+        </div>
+
+        <article class="card is-visible">
+          <div class="beverage-grid">
+            <div class="bev-item">
+              <figure><img src="images/aquafina.png" alt="Aquafina water bottle"></figure>
+              <strong>Water</strong>
+              <span>$3.00</span>
+            </div>
+            <div class="bev-item">
+              <figure><img src="images/pepsi.png" alt="Pepsi bottle"></figure>
+              <strong>Soda</strong>
+              <span>$3.25</span>
+            </div>
+            <div class="bev-item">
+              <figure><img src="images/gatorade.png" alt="Gatorade bottle"></figure>
+              <strong>Gatorade</strong>
+              <span>$3.50</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <section class="footer-panel">
+          <h2>Find Us On Social</h2>
+          <p>@polishwatericeww on every platform.</p>
+          <div class="socials" style="margin-top: 1rem;">
+            <a class="social" href="https://www.instagram.com/polishwatericeww" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social" href="https://www.facebook.com/polishwatericeww" target="_blank" rel="noreferrer">Facebook</a>
+            <a class="social" href="https://www.tiktok.com/@polishwatericeww" target="_blank" rel="noreferrer">TikTok</a>
+          </div>
+          <p class="copyright">© 2025 Polish Water Ice &amp; Ice Cream Wildwood, NJ</p>
+        </section>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll("[data-animate]").forEach((card) => observer.observe(card));
+  </script>
+</body>
+</html>
